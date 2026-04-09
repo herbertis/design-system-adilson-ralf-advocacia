@@ -276,14 +276,14 @@
       display: flex;
       align-items: center;
       min-width: 100%;
-      animation: scroll-left 45s linear infinite;
+      /* animation: scroll-left 45s linear infinite; */ /* Disabled for JS control */
     }
     .marquee-content-reverse {
       flex-shrink: 0;
       display: flex;
       align-items: center;
       min-width: 100%;
-      animation: scroll-left 45s linear infinite reverse;
+      /* animation: scroll-left 45s linear infinite reverse; */ /* Disabled for JS control */
     }
 
     /* ============= CAROUSEL ============= */
@@ -1678,7 +1678,7 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="crest-line mb-4"></div>
       <p style="font-family:var(--font-display); font-size:1.5rem; font-weight:300; color:rgba(255,255,255,0.4); font-style:italic; margin-bottom:0.5rem;">Adilson Ralf Advocacia</p>
-      <p class="section-label" style="color:rgba(255,255,255,0.2); margin-bottom:2rem;">Design System v1.0 — 2026 · Rua Luiz Junqueira de Carvalho, 168 · Pouso Alegre, MG</p>
+      <p class="section-label" style="color:rgba(255,255,255,0.2); margin-bottom:2rem;">Design System v1.0 — 2026</p>
       <div class="divider-gold mb-4" style="opacity:0.3;"></div>
       <p style="font-family:var(--font-mono); font-size:10px; color:rgba(255,255,255,0.15);">© 2026 Adilson Ralf Advocacia. Todos os direitos reservados.</p>
     </div>
@@ -1885,6 +1885,47 @@
       }, { threshold: 0.3 });
 
       document.querySelectorAll('.hero-stat').forEach(el => counterObserver.observe(el.closest('.grid') || el));
+
+      // ——— MARQUEE ANIMATION (Smooth Loop) ———
+      document.querySelectorAll('.marquee-container').forEach(container => {
+        const content = container.querySelector('.marquee-content') || container.querySelector('.marquee-content-reverse');
+        if (!content) return;
+
+        let position = 0;
+        const speed = 0.5; // Pixels per frame - adjust for speed
+        const isReverse = content.classList.contains('marquee-content-reverse');
+
+        function animate() {
+          const contentWidth = content.offsetWidth;
+          const containerWidth = container.offsetWidth;
+
+          if (isReverse) {
+            position -= speed;
+            if (position <= -contentWidth) {
+              position = 0;
+            }
+          } else {
+            position += speed;
+            if (position >= contentWidth) {
+              position = 0;
+            }
+          }
+
+          content.style.transform = `translateX(${isReverse ? position : -position}px)`;
+          requestAnimationFrame(animate);
+        }
+
+        // Start animation when in view
+        const marqueeObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              animate();
+              marqueeObserver.unobserve(entry.target);
+            }
+          });
+        });
+        marqueeObserver.observe(container);
+      });
 
     }); // End DOMContentLoaded
 
