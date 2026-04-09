@@ -134,6 +134,36 @@
       --duration-base: 0.3s;
       --duration-slow: 0.6s;
       --duration-reveal: 1.2s;
+
+      /* Theme helpers */
+      --header-bg: rgba(247,246,242,0.88);
+      --hero-bg: var(--color-navy-900);
+      --panel-bg: var(--color-white);
+      --panel-bg-strong: rgba(255,255,255,0.85);
+      --ghost-outline: rgba(28,28,24,0.12);
+      --ghost-outline-soft: rgba(28,28,24,0.08);
+      --header-logo-color: var(--color-navy-800);
+      --text-muted-light: rgba(28,28,24,0.65);
+      --button-bg: linear-gradient(135deg, var(--color-navy-700), var(--color-navy-500));
+    }
+
+    body.theme-dark {
+      --color-bg:    #0a0a0a;
+      --color-bg-2:  #1a1a1a;
+      --color-white: #ffffff;
+      --color-ink:   #f5f5f5;
+      --color-muted: #999999;
+      --color-border: rgba(255,255,255,0.10);
+
+      --header-bg: rgba(10,10,10,0.88);
+      --hero-bg: var(--color-bg);
+      --panel-bg: rgba(255,255,255,0.05);
+      --panel-bg-strong: rgba(255,255,255,0.08);
+      --ghost-outline: rgba(255,255,255,0.15);
+      --ghost-outline-soft: rgba(255,255,255,0.06);
+      --header-logo-color: var(--color-ink);
+      --text-muted-light: rgba(255,255,255,0.72);
+      --button-bg: linear-gradient(135deg, var(--color-navy-600), var(--color-navy-400));
     }
 
     /* ============= BASE ============= */
@@ -227,7 +257,7 @@
       line-height: 0.88;
       letter-spacing: -0.03em;
       color: transparent;
-      -webkit-text-stroke: 1px rgba(28,28,24,0.12);
+      -webkit-text-stroke: 1px var(--ghost-outline);
       pointer-events: none;
       user-select: none;
     }
@@ -235,7 +265,7 @@
       font-family: var(--font-display);
       font-weight: 700;
       color: transparent;
-      -webkit-text-stroke: 1px rgba(255,255,255,0.15);
+      -webkit-text-stroke: 1px var(--ghost-outline);
       pointer-events: none;
       user-select: none;
     }
@@ -405,7 +435,7 @@
 
     /* ============= COMPONENT DEMOS ============= */
     .demo-section {
-      background: var(--color-white);
+      background: var(--panel-bg);
       border: 1px solid var(--color-border);
       border-radius: var(--radius-lg);
       overflow: hidden;
@@ -464,7 +494,7 @@
     .input-field {
       width: 100%;
       padding: 0.75rem 1rem;
-      background: var(--color-white);
+      background: var(--panel-bg);
       border: 1px solid rgba(28,28,24,0.2);
       border-radius: var(--radius-md);
       font-family: var(--font-sans);
@@ -481,7 +511,7 @@
 
     /* ============= CARD ============= */
     .card-ds {
-      background: var(--color-white);
+      background: var(--panel-bg);
       border: 1px solid var(--color-border);
       border-radius: var(--radius-lg);
       transition: transform 0.3s var(--ease-spring), box-shadow 0.3s;
@@ -497,7 +527,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 1rem 2rem;
-      background: rgba(255,255,255,0.85);
+      background: var(--panel-bg-strong);
       backdrop-filter: blur(20px);
       border: 1px solid var(--color-border);
       border-radius: var(--radius-lg);
@@ -519,7 +549,7 @@
     }
     .modal-overlay.open { opacity: 1; pointer-events: all; }
     .modal-box {
-      background: var(--color-white);
+      background: var(--panel-bg);
       border-radius: var(--radius-xl);
       padding: 2.5rem;
       max-width: 480px;
@@ -539,7 +569,7 @@
       padding: 1.5rem;
       border: 1px solid var(--color-border);
       border-radius: var(--radius-md);
-      background: var(--color-white);
+      background: var(--panel-bg);
       transition: all 0.2s var(--ease-elastic);
       cursor: pointer;
     }
@@ -553,6 +583,39 @@
       color: var(--color-navy-600);
     }
 
+    body.theme-dark .demo-section,
+    body.theme-dark .card-ds,
+    body.theme-dark .modal-box,
+    body.theme-dark .icon-wrapper {
+      background: rgba(255,255,255,0.05) !important;
+    }
+    body.theme-dark .navbar-ds {
+      background: rgba(255,255,255,0.08) !important;
+      border-color: rgba(255,255,255,0.1);
+    }
+    body.theme-dark .section-label {
+      color: #999999 !important;
+    }
+    body.theme-dark .badge-outline {
+      color: #cccccc !important;
+      border-color: rgba(255,255,255,0.12);
+    }
+    body.theme-dark .input-field {
+      color: var(--color-ink) !important;
+      border-color: rgba(255,255,255,0.12) !important;
+    }
+    body.theme-dark .hero-stats-grid {
+      background: rgba(255,255,255,0.04) !important;
+    }
+    body.theme-dark .bg-paper {
+      background: #121212 !important;
+    }
+    body.theme-dark .ghost-text,
+    body.theme-dark .ghost-text-white {
+      -webkit-text-stroke-color: var(--ghost-outline) !important;
+    }
+
+    /* ============= SECTION BG VARIANTS ============= */
     /* ============= SECTION BG VARIANTS ============= */
     .bg-dark-ds {
       background: var(--color-navy-900);
@@ -702,7 +765,7 @@
   <!-- =============================================
        NAVIGATION (Sticky)
        ============================================= -->
-  <header class="sticky top-0 z-50 nav-load" style="background: rgba(247,246,242,0.88); backdrop-filter: blur(24px); border-bottom: 1px solid var(--color-border);">
+  <header class="sticky top-0 z-50 nav-load" style="background: var(--header-bg); backdrop-filter: blur(24px); border-bottom: 1px solid var(--color-border);">
     <div class="max-w-[1400px] mx-auto flex items-center justify-between px-6 py-4">
       <nav class="flex items-center gap-8">
         <a href="#hero" class="section-label hover:text-navy-700 transition-colors">Hero</a>
@@ -715,15 +778,20 @@
         <div class="w-8 h-8 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform" style="background: linear-gradient(135deg, var(--color-navy-700), var(--color-navy-500));">
           <span class="text-white font-bold text-xs" style="font-family: var(--font-display);">AR</span>
         </div>
-        <span style="font-family: var(--font-sans); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-navy-800);">DESIGN SYSTEM</span>
+        <span style="font-family: var(--font-sans); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--header-logo-color);">DESIGN SYSTEM</span>
       </div>
 
       <nav class="flex items-center gap-6">
         <a href="#motion" class="section-label hover:text-navy-700 transition-colors hidden md:block">Animações</a>
         <a href="#icons" class="section-label hover:text-navy-700 transition-colors hidden md:block">Ícones</a>
+        <button id="theme-toggle"
+          class="btn-beam btn-glow px-5 py-2 text-white text-xs tracking-widest uppercase rounded-full transition-all hover:scale-105"
+          style="background: var(--button-bg); font-family: var(--font-sans); font-weight: 600;">
+          Dark Mode
+        </button>
         <button onclick="document.getElementById('modal-demo').classList.add('open')"
           class="btn-beam btn-glow px-5 py-2 text-white text-xs tracking-widest uppercase rounded-full"
-          style="background: linear-gradient(135deg, var(--color-navy-700), var(--color-navy-500)); font-family: var(--font-sans); font-weight: 600;">
+          style="background: var(--button-bg); font-family: var(--font-sans); font-weight: 600;">
           Ver Demo
         </button>
       </nav>
@@ -733,7 +801,7 @@
   <!-- =============================================
        SECTION 1 — HERO (First Fold)
        ============================================= -->
-  <section id="hero" class="relative min-h-screen overflow-hidden noise-overlay" style="background: var(--color-navy-900);">
+  <section id="hero" class="relative min-h-screen overflow-hidden noise-overlay" style="background: var(--hero-bg);">
 
     <!-- ANIMATED CANVAS BACKGROUND -->
     <canvas id="particle-canvas"></canvas>
@@ -811,7 +879,7 @@
       </div>
 
       <!-- STATS ROW -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-px reveal delay-500" style="background: rgba(255,255,255,0.08); border-radius:var(--radius-lg); overflow:hidden;">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-px reveal delay-500 hero-stats-grid" style="background: rgba(255,255,255,0.08); border-radius:var(--radius-lg); overflow:hidden;">
         <div class="hero-stat flex flex-col gap-1 p-6" style="background: rgba(20,39,75,0.6); backdrop-filter:blur(8px);">
           <span class="counter-number" style="font-size:2.5rem;" data-target="20">0</span>
           <span style="font-size:0.7rem; color:rgba(255,255,255,0.4); letter-spacing:0.15em; text-transform:uppercase; font-weight:500;">Anos de Experiência</span>
@@ -1928,6 +1996,26 @@
       });
 
     }); // End DOMContentLoaded
+
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+      const setThemeLabel = () => {
+        const isDark = document.body.classList.contains('theme-dark');
+        themeToggle.textContent = isDark ? 'White Mode' : 'Dark Mode';
+      };
+
+      const currentTheme = localStorage.getItem('site-theme');
+      if (currentTheme === 'dark') {
+        document.body.classList.add('theme-dark');
+      }
+      setThemeLabel();
+
+      themeToggle.addEventListener('click', () => {
+        const isDark = document.body.classList.toggle('theme-dark');
+        localStorage.setItem('site-theme', isDark ? 'dark' : 'light');
+        setThemeLabel();
+      });
+    }
 
     // ——— MOTION DEMO TOGGLE ———
     let motionActive = false;
