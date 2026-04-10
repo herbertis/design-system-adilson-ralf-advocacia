@@ -615,6 +615,67 @@
       -webkit-text-stroke-color: var(--ghost-outline) !important;
     }
 
+    /* ===== DARK MODE: ADDITIONAL FIXES ===== */
+
+    /* Section headings — navy-900/800/700 becomes ink */
+    body.theme-dark #typography h2,
+    body.theme-dark #typography h3,
+    body.theme-dark #components h2,
+    body.theme-dark #components h3,
+    body.theme-dark #colors h2,
+    body.theme-dark #motion h2,
+    body.theme-dark #motion h3 {
+      color: var(--color-ink) !important;
+    }
+
+    /* Inline navy-dark text inside adaptive sections */
+    body.theme-dark #typography [style*="color:var(--color-navy-9"],
+    body.theme-dark #typography [style*="color:var(--color-navy-8"],
+    body.theme-dark #typography [style*="color:var(--color-navy-7"],
+    body.theme-dark #components [style*="color:var(--color-navy-9"],
+    body.theme-dark #components [style*="color:var(--color-navy-8"],
+    body.theme-dark #components [style*="color:var(--color-navy-7"],
+    body.theme-dark #colors [style*="color:var(--color-navy-9"],
+    body.theme-dark #colors [style*="color:var(--color-navy-8"],
+    body.theme-dark #motion [style*="color:var(--color-navy-9"],
+    body.theme-dark #motion [style*="color:var(--color-navy-8"] {
+      color: var(--color-ink) !important;
+    }
+
+    /* Type specimen table */
+    body.theme-dark .type-specimen:hover {
+      background: rgba(255,255,255,0.04) !important;
+    }
+    body.theme-dark .type-specimen[style*="navy-50"],
+    body.theme-dark .type-specimen[style*="navy-50"] .type-meta {
+      background: rgba(255,255,255,0.07) !important;
+      color: var(--color-ink) !important;
+    }
+
+    /* Badges */
+    body.theme-dark .badge-navy {
+      background: rgba(86,128,184,0.18) !important;
+      color: var(--color-navy-200) !important;
+    }
+    body.theme-dark .badge-gold {
+      background: rgba(201,162,58,0.12) !important;
+      color: var(--color-gold-300) !important;
+    }
+    body.theme-dark .badge-success {
+      background: rgba(45,125,79,0.2) !important;
+      color: #6fd9a0 !important;
+    }
+    body.theme-dark .badge-error {
+      background: rgba(192,57,43,0.2) !important;
+      color: #f08070 !important;
+    }
+
+    /* Navbar demo wrapper */
+    body.theme-dark .navbar-ds [style*="color:var(--color-navy-8"],
+    body.theme-dark .navbar-ds [style*="color:var(--color-navy-7"] {
+      color: var(--color-ink) !important;
+    }
+
     /* ============= SECTION BG VARIANTS ============= */
     /* ============= SECTION BG VARIANTS ============= */
     .bg-dark-ds {
@@ -939,7 +1000,7 @@
   <!-- =============================================
        SECTION 2 — TIPOGRAFIA
        ============================================= -->
-  <section id="typography" class="relative overflow-hidden" style="background: var(--color-white);">
+  <section id="typography" class="relative overflow-hidden" style="background: var(--color-bg);">
 
     <!-- Ghost background -->
     <div class="absolute inset-0 flex items-start justify-end pointer-events-none overflow-hidden">
@@ -1243,7 +1304,7 @@
   <!-- =============================================
        SECTION 4 — COMPONENTES UI
        ============================================= -->
-  <section id="components" class="relative overflow-hidden" style="background:var(--color-white);">
+  <section id="components" class="relative overflow-hidden" style="background:var(--color-bg);">
 
     <!-- Ghost -->
     <div class="absolute inset-y-0 right-0 flex items-center pointer-events-none overflow-hidden">
